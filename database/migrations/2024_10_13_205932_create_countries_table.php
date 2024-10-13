@@ -12,15 +12,12 @@ return new class () extends Migration {
      */
     public function up(): void
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table): void {
-            $table->id();
-            $table->ulidMorphs('tokenable');
+        Schema::create('countries', function (Blueprint $table): void {
+            $table->ulid('id')->primary();
+            $table->string('code')->nullable();
             $table->string('name');
-            $table->string('token', 64)->unique();
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
-            $table->timestamp('expires_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -29,6 +26,6 @@ return new class () extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('personal_access_tokens');
+        Schema::dropIfExists('countries');
     }
 };
