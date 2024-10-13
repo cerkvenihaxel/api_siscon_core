@@ -7,6 +7,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 final class UserProfessional extends Model
@@ -19,4 +20,14 @@ final class UserProfessional extends Model
         'user_id',
         'professional_id',
     ];
+
+    public function professional(): BelongsTo
+    {
+        return $this->belongsTo(Professional::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

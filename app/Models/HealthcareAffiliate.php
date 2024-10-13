@@ -7,6 +7,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 final class HealthcareAffiliate extends Model
@@ -19,5 +20,15 @@ final class HealthcareAffiliate extends Model
         'healthcare_id',
         'affiliate_id',
     ];
+
+    public function healthcare(): BelongsTo
+    {
+        return $this->belongsTo(Healthcare::class);
+    }
+
+    public function affiliate(): BelongsTo
+    {
+        return $this->belongsTo(Affiliate::class);
+    }
 
 }

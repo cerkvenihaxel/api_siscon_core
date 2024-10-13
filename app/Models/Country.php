@@ -21,4 +21,29 @@ final class Country extends Model
     {
         return $this->hasMany(Province::class);
     }
+
+    public function affiliates(): HasMany
+    {
+        return $this->hasMany(Affiliate::class);
+    }
+
+    public function clinics(): HasMany
+    {
+        return $this->hasMany(Clinic::class);
+    }
+
+    public function healthcares(): HasMany
+    {
+        return $this->hasMany(Healthcare::class);
+    }
+
+    public function suppliers(): HasMany
+    {
+        return $this->hasMany(Supplier::class);
+    }
+
+    public function professionals(): HasMany
+    {
+        return $this->hasMany(Professional::class);
+    }
 }
